@@ -56,6 +56,9 @@ export default function Navbar(){
                     <Route path="/register">
                         <Register />
                     </Route>
+                    <Route path="/">
+                        <h1>404 not found</h1>
+                    </Route>
 
                 </Switch>
             </div>

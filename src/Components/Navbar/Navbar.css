@@ -18,7 +18,6 @@ nav{
     min-height: 10vh;
     align-items: center;
     background-color: black;
-    color: white;
 }
 
 nav img{
@@ -33,13 +32,14 @@ nav .navbar-menu{
     width: 35%;
 }
 
-nav .navbar-menu Link{
+nav .navbar-menu a{
     font-size: 18px;
     font-weight: normal;
     cursor: pointer;
+    color: white;
 }
 
-nav .navbar-menu Link:hover{
+nav .navbar-menu a:hover{
     border-bottom: 1px solid #fff;
 }
 
