@@ -1,11 +1,9 @@
 import React from 'react';
 
-export default function Login(){
+export default function Trending(){
     return(
         <div>
-            <p>Login</p>
+            <p>Trending</p>
         </div>
     )
-
-
 }
