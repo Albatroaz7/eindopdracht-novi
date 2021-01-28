@@ -1,4 +1,78 @@
-label, input{
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: grey;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    border-bottom: 1px solid #fff;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
+p{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+.sign-in-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("https://image.api.playstation.com/vulcan/img/cfn/11307RSOY0YPjr2OSOyHwixkMPLtwugfbK0qJ59Su4vVYEnYgoTQKZ2nVrUr9RAo8--DOk45lw0-7rUo2O5hJVg4Te4gV6RE.png");
+}
+
+.sign-in-form{
+    background-color: black;
+    padding: 2.5em;
+
+    border: 2px solid red;
+    border-radius: 25px;
+}
+
+.sign-in-container input{
+    min-width: 300px;
     display: block;
-    margin: 10px;
+    margin: 20px;
+    padding: 15px 5px;
+    font-size: 18px;
+    font-weight: 400;
+    border-width: 0 0 2px 0;
+    border-color: black;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.sign-in-container input:focus{
+    border-color: #555;
+}
+
+.sign-in-submit{
+    padding: 12px 5px;
+    border-width: 0;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: red;
+    outline: none;
+}
+
+.sign-in-submit:hover{
+    background-color: #d4806b;
 }
