@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import "./RegisterForm.css"
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { faExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function SignInForm(){
     const { register, handleSubmit, errors, watch} = useForm();
@@ -12,7 +14,11 @@ export default function SignInForm(){
         console.log(data);
     }
 
+//Variable aangemaakt voor het icoontje om het makkelijker te hergebruiken.
+    const icon = <FontAwesomeIcon icon={faExclamation}/>
+
     return(
+
         <div className="sign-up-container">
 
             <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
@@ -26,7 +32,7 @@ export default function SignInForm(){
                         required: "Username is required"
                     })}
                 />
-                <div className="error-message">{errors.username && <p>Username is required</p>}</div>
+                <div className="error-message">{errors.username && <p>{icon} Username is required</p>}</div>
 
                 <label htmlFor="email"/>
                 <input
@@ -37,8 +43,7 @@ export default function SignInForm(){
                         required: "Email is required"
                     })}
                 />
-                <div className="error-message">{errors.email && <p>Email is required</p>}</div>
-
+                <div className="error-message">{errors.email && <p>{icon} Email is required</p>}</div>
 
                 <label htmlFor="password"/>
                 <input
@@ -53,7 +58,7 @@ export default function SignInForm(){
                         }
                     })}
                 />
-                <div className="error-message">{errors.password && <p>{errors.password.message}</p>}</div>
+                <div className="error-message">{errors.password && <p>{icon} {errors.password.message}</p>}</div>
 
                 <label htmlFor="confirm password"/>
                 <input
@@ -64,13 +69,13 @@ export default function SignInForm(){
                         required: "Confirm password is required",
                         minLength: {
                             value: 6,
-                            message: "Confirm password must have at least 6 characters"
+                            message: "Password must have at least 6 characters"
                         },
                         validate: value =>
                             value === password.current || "The passwords do not match"
                     })}
                 />
-                <div className="error-message" >{errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}</div>
+                <div className="error-message" >{errors.confirmPassword && <p>{icon} {errors.confirmPassword.message}</p>}</div>
 
                 <input className="sign-up-submit"
                        type="submit"
