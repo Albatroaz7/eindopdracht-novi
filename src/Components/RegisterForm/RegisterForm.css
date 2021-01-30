@@ -30,16 +30,22 @@ span{
     color: white;
 }
 
-.sign-in-container{
+/*.error-message{*/
+/*    color: #ba3939;*/
+/*    background: #ffe0e0;*/
+/*    border: 1px solid #a33a3a;*/
+/*}*/
+
+.sign-up-container{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url("https://image.api.playstation.com/vulcan/img/cfn/11307RSOY0YPjr2OSOyHwixkMPLtwugfbK0qJ59Su4vVYEnYgoTQKZ2nVrUr9RAo8--DOk45lw0-7rUo2O5hJVg4Te4gV6RE.png");
+    background-image: url("https://i.pinimg.com/originals/cc/86/23/cc8623225c627ce5c67f7134a3434c20.jpg");
 }
 
-.sign-in-form{
+.sign-up-form{
     background-color: black;
     padding: 2.5em;
 
@@ -47,7 +53,7 @@ span{
     border-radius: 25px;
 }
 
-.sign-in-container input{
+.sign-up-container input{
     min-width: 300px;
     display: block;
     margin: 20px;
@@ -60,11 +66,11 @@ span{
     transition: border-color 0.2s;
 }
 
-.sign-in-container input:focus{
+.sign-up-container input:focus{
     border-color: #555;
 }
 
-.sign-in-submit{
+.sign-up-submit{
     padding: 12px 5px;
     border-width: 0;
     font-size: 18px;
@@ -74,11 +80,11 @@ span{
     cursor: pointer;
 }
 
-.sign-in-submit:hover{
+.sign-up-submit:hover{
     background-color: #d4806b;
 }
 
-.sign-in-form .error-message{
+.sign-up-form .error-message{
     margin-top: 5px;
     width: 345px;
     font-size: 18px;

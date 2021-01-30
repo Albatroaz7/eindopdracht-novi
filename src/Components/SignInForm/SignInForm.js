@@ -15,28 +15,28 @@ function onSubmit(data){
 
     <form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Login</h1>
-        <label htmlFor="userName"></label>
+        <label htmlFor="userName"/>
         <input
             name="username"
             type="text"
             placeholder="Username"
             ref={register({required: true})}
         />
-        {errors.username && <p>Username is required</p>}
+        <div className="error-message">{errors.username && <p>Username is required</p>}</div>
 
-        <label htmlFor="password"></label>
+        <label htmlFor="password"/>
         <input
             name="password"
             type="password"
             placeholder="Password"
             ref={register({required: true})}
         />
-        {errors.password && <p>Password is required</p>}
+        <div className="error-message">{errors.password && <p>Password is required</p>}</div>
 
         <input className="sign-in-submit"
             type="submit"
         />
-        <p>New user?<Link to="/register">Register here</Link></p>
+        <span>New user?<Link to="/register">Register here</Link></span>
     </form>
     </div>
     )
