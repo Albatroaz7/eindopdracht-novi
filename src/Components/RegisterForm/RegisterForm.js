@@ -66,7 +66,7 @@ export default function SignInForm(){
                     type="password"
                     placeholder="Confirm Password"
                     ref={register({
-                        required: "Confirm password is required",
+                        required: "Password is required",
                         minLength: {
                             value: 6,
                             message: "Password must have at least 6 characters"

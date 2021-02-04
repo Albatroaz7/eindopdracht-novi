@@ -1,0 +1,19 @@
+.movie-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.movie-compo{
+    border: 1px solid black;
+}
+
+/*.movie-title{*/
+/*    white-space: pre;*/
+/*}*/
+
+img{
+    display: block;
+}
+
