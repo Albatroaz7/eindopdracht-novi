@@ -3,15 +3,18 @@ import axios from "axios";
 import './MovieImages.css'
 
 
+
 export default function MovieImages(){
     const [ movies, setMovies] = useState([]);
+    const [ searchTerm, setSearchTerm] = useState('');
 
     const options = {
         method: 'GET',
         url: 'https://unogsng.p.rapidapi.com/search',
         params: {
+            query: searchTerm,
             orderby: 'rating',
-            limit: '9',
+            limit: '50',
             type: 'movie',
             countrylist: '67',
             start_year: '2010',
@@ -26,30 +29,55 @@ export default function MovieImages(){
 //Using the useEffect to get the data from the API the moment the page loads.
     useEffect(() => {
         try {
-            async function getImage() {
+            async function getMovie() {
                 const response = await axios(options)
-
                 setMovies(response.data.results)
             }
-            getImage();
-
+            getMovie()
         } catch(e) {
             console.error(e);
         }
 
-    }, [])
+    }, [searchTerm])
 
     console.log(movies)
 
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        console.log(searchTerm)
+        // {movies?.map((movie) => {
+        //     return <div className='movie-compo'>
+        //         <img src={movie?.img}/>
+        //         <h3>{movie?.imdbrating}</h3>
+        //     </div>
+        // })}
+    }
+
+    const handleOnChange = (e) => {
+        if(e.charCode === 13) {
+            setSearchTerm(e.target.value);
+        }
+    }
+
     return(
-        //Mapping over the api to get the key/values out of the object.
+
   <div className='movie-container'>
-      {movies?.map((movie) => {
-          return <div className='movie-compo'>
-              <img src={movie?.img}/>
-              <h3>{movie?.imdbrating}</h3>
-          </div>
-      })}
+      <div className='search-bar-container'>
+          <h1>Search</h1>
+          <form onSubmit={handleOnSubmit}>
+          <input className='search-bar'
+              type='text'
+              placeholder='Search'
+              onKeyPress={handleOnChange}
+          />
+          </form>
+      </div>
+      {/*{movies?.map((movie) => {*/}
+      {/*    return <div className='movie-compo'>*/}
+      {/*        <img src={movie?.img}/>*/}
+      {/*        <h3>{movie?.imdbrating}</h3>*/}
+      {/*    </div>*/}
+      {/*})}*/}
   </div>
 
     )

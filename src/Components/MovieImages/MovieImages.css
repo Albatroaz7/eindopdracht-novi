@@ -1,19 +1,50 @@
 .movie-container{
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-image: url("https://images.pathe-thuis.nl/13546_1920x1080.jpg");
 }
 
 .movie-compo{
     border: 1px solid black;
 }
 
-/*.movie-title{*/
-/*    white-space: pre;*/
-/*}*/
-
 img{
     display: block;
+    max-width: 100%;
 }
 
+.search-bar-container{
+    box-sizing: border-box;
+    background-color: black;
+    padding: 50px;
+    margin-top: 200px;
+    margin-bottom: 600px;
+
+    border: 2px solid red;
+    border-radius: 25px;
+}
+
+.search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    min-width: 300px;
+
+    padding: 15px 5px;
+    font-size: 18px;
+    font-weight: 400;
+    border-width: 0 0 2px 0;
+    border-color: black;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+legend{
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
