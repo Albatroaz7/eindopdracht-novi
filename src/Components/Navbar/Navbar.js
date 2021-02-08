@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { Switch, Link, Route } from "react-router-dom";
 import Homepage from "../../Pages/Homepage/Homepage";
 import MyProfile from "../../Pages/MyProfile/MyProfile";
 import Trending from "../../Pages/Trending/Trending";
@@ -10,9 +10,8 @@ import './Navbar.css';
 
 export default function Navbar(){
     return(
-
-        <Router>
-            <div className="nav-container">
+<>
+        <div className="nav-container">
                 <div className="navigation-logo">
                 <nav>
                     <img
@@ -25,9 +24,6 @@ export default function Navbar(){
                         </li>
                         <li>
                             <Link to="/myprofile">MyProfile</Link>
-                        </li>
-                        <li>
-                            <Link to="/trending">Trending</Link>
                         </li>
                         <li>
                             <Link to="/login">Login</Link>
@@ -62,6 +58,7 @@ export default function Navbar(){
 
                 </Switch>
             </div>
-        </Router>
+</>
+
     )
 }

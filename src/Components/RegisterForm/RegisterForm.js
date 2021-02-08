@@ -4,14 +4,29 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+
+const endpointLinkRegister = 'https://polar-lake-14365.herokuapp.com/api/auth/signup'
 
 export default function SignInForm(){
     const { register, handleSubmit, errors, watch} = useForm();
     const password = useRef({});
     password.current = watch("password", "");
 
-    function onSubmit(data){
+    async function onSubmit(data){
         console.log(data);
+        try{
+            const response = await axios.post(endpointLinkRegister, {
+                username: data.username,
+                email: data.email,
+                password: data.password,
+                confirmpassword: data.confirmpassword,
+
+            });
+            console.log(response);
+        } catch(e){
+            console.log(e);
+        }
     }
 
 //Variable aangemaakt voor het icoontje om het makkelijker te hergebruiken.

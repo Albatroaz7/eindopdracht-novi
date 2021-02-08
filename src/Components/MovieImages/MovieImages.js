@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './MovieImages.css'
 
-
-
 export default function MovieImages(){
     const [ movies, setMovies] = useState([]);
     const [ searchTerm, setSearchTerm] = useState('');
@@ -14,7 +12,7 @@ export default function MovieImages(){
         params: {
             query: searchTerm,
             orderby: 'rating',
-            limit: '50',
+            limit: '100',
             type: 'movie',
             countrylist: '67',
             start_year: '2010',
@@ -26,22 +24,22 @@ export default function MovieImages(){
         }
     };
 
-//Using the useEffect to get the data from the API the moment the page loads.
+    //Using the useEffect to get the data from the API the moment the page loads.
     useEffect(() => {
-        try {
             async function getMovie() {
+                try {
                 const response = await axios(options)
                 setMovies(response.data.results)
-            }
-            getMovie()
-        } catch(e) {
-            console.error(e);
+            }catch(e) {
+                    console.error(e);
+                }
         }
-
+        getMovie()
     }, [searchTerm])
 
     console.log(movies)
 
+    // the function that is being called upon whenever the user presses 'enter'.
     const handleOnSubmit = (e) => {
         e.preventDefault();
         console.log(searchTerm)
@@ -53,6 +51,7 @@ export default function MovieImages(){
         // })}
     }
 
+    //Changes the state of searchterm with the users input whenever he/she presses 'enter'.
     const handleOnChange = (e) => {
         if(e.charCode === 13) {
             setSearchTerm(e.target.value);
@@ -61,6 +60,7 @@ export default function MovieImages(){
 
     return(
 
+        //form for the searchbar
   <div className='movie-container'>
       <div className='search-bar-container'>
           <h1>Search</h1>
@@ -72,12 +72,12 @@ export default function MovieImages(){
           />
           </form>
       </div>
-      {/*{movies?.map((movie) => {*/}
-      {/*    return <div className='movie-compo'>*/}
-      {/*        <img src={movie?.img}/>*/}
-      {/*        <h3>{movie?.imdbrating}</h3>*/}
-      {/*    </div>*/}
-      {/*})}*/}
+      {movies?.map((movie) => {
+          return <div className='movie-compo'>
+              <img src={movie?.img}/>
+              <h3>{movie?.imdbrating}</h3>
+          </div>
+      })}
   </div>
 
     )

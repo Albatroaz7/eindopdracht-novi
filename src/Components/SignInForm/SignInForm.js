@@ -1,15 +1,41 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import "./SignInForm.css"
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {faExclamation} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { AuthContext, useAuthState } from "../Context/AuthContext";
+
+const endpointLinkSignIn = 'https://polar-lake-14365.herokuapp.com/api/auth/signin';
 
 export default function SignInForm(){
+
+    const history = useHistory();
+    const { login } = useContext(AuthContext);
+    const { isAuthenticated } = useAuthState();
     const { register, handleSubmit, errors} = useForm();
 
-function onSubmit(data){
+
+    useEffect(() => {
+        if (isAuthenticated === true){
+            history.push('/myprofile')
+        }
+    }, [isAuthenticated])
+
+async function onSubmit(data){
     console.log(data);
+    try{
+        // Het is ook mogelijk om alleen 'data' te gebruiken, echter schrijf ik het liever uit
+        // voor de duidelijkheid.
+        const response = await axios.post(endpointLinkSignIn, {
+            username: data.username,
+            password: data.password,
+        });
+        login(response.data);
+    } catch(e){
+        console.error(e);
+    }
 }
 
 //Variable aangemaakt voor het icoontje om het makkelijker te hergebruiken.
@@ -44,6 +70,6 @@ function onSubmit(data){
         <span>New user?<Link to="/register">Register here</Link></span>
     </form>
     </div>
-    )
+    );
 
 }
