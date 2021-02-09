@@ -72,12 +72,12 @@ export default function MovieImages(){
           />
           </form>
       </div>
-      {movies?.map((movie) => {
-          return <div className='movie-compo'>
-              <img src={movie?.img}/>
-              <h3>{movie?.imdbrating}</h3>
-          </div>
-      })}
+      {/*{movies?.map((movie) => {*/}
+      {/*    return <div className='movie-compo'>*/}
+      {/*        <img src={movie?.img}/>*/}
+      {/*        <h3>{movie?.imdbrating}</h3>*/}
+      {/*    </div>*/}
+      {/*})}*/}
   </div>
 
     )

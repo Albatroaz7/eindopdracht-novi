@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import "./RegisterForm.css"
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ import axios from "axios";
 const endpointLinkRegister = 'https://polar-lake-14365.herokuapp.com/api/auth/signup'
 
 export default function SignInForm(){
+    const [ createUserSucces, setCreateUserSucces ] = useState(false);
+    const [ createUserError, setCreateUserError ] = useState(false);
     const { register, handleSubmit, errors, watch} = useForm();
     const password = useRef({});
     password.current = watch("password", "");
@@ -21,11 +23,15 @@ export default function SignInForm(){
                 email: data.email,
                 password: data.password,
                 confirmpassword: data.confirmpassword,
-
+                role: ['user'],
             });
             console.log(response);
+            if(response.status === 200){
+                setCreateUserSucces(true);
+            }
         } catch(e){
             console.log(e);
+            setCreateUserError(true);
         }
     }
 
@@ -35,6 +41,7 @@ export default function SignInForm(){
     return(
 
         <div className="sign-up-container">
+
 
             <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
                 <h1>Register</h1>
@@ -91,11 +98,13 @@ export default function SignInForm(){
                     })}
                 />
                 <div className="error-message" >{errors.confirmPassword && <p>{icon} {errors.confirmPassword.message}</p>}</div>
+                {createUserSucces === true && <span>Registered succesfully, you can now <Link to="/login">Login here</Link></span>}
+                {createUserError === true && <span>Username or email is already in use.</span>}
 
                 <input className="sign-up-submit"
                        type="submit"
                 />
-                <span>Already have an account?<Link to="/login">Login here</Link></span>
+                {/*<span>Already have an account?<Link to="/login">Login here</Link></span>*/}
             </form>
         </div>
     )
