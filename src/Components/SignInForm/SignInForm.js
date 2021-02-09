@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./SignInForm.css"
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
@@ -10,7 +10,7 @@ import { AuthContext, useAuthState } from "../Context/AuthContext";
 const endpointLinkSignIn = 'https://polar-lake-14365.herokuapp.com/api/auth/signin';
 
 export default function SignInForm(){
-
+    const [ error, setError] = useState(false);
     const history = useHistory();
     const { login } = useContext(AuthContext);
     const { isAuthenticated } = useAuthState();
@@ -35,6 +35,7 @@ async function onSubmit(data){
         login(response.data);
     } catch(e){
         console.error(e);
+        setError(true);
     }
 }
 
@@ -63,6 +64,8 @@ async function onSubmit(data){
             ref={register({required: true})}
         />
         <div className="error-message">{errors.password && <p>{icon} Password is required</p>}</div>
+        <br />
+        {error && <span>Failed to log in</span>}
 
         <input className="sign-in-submit"
             type="submit"

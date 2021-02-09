@@ -34,6 +34,11 @@ function AuthContextProvider({ children }){
     }
 
     function logout(){
+        localStorage.clear();
+        setAuthState({
+            ...authState,
+            user: null,
+        })
 
     }
 

@@ -11,12 +11,15 @@ const endpointLinkRegister = 'https://polar-lake-14365.herokuapp.com/api/auth/si
 export default function SignInForm(){
     const [ createUserSucces, setCreateUserSucces ] = useState(false);
     const [ createUserError, setCreateUserError ] = useState(false);
+    const [ loading, toggleLoading ] = useState(false);
+
     const { register, handleSubmit, errors, watch} = useForm();
     const password = useRef({});
     password.current = watch("password", "");
 
     async function onSubmit(data){
         console.log(data);
+        toggleLoading(true);
         try{
             const response = await axios.post(endpointLinkRegister, {
                 username: data.username,
@@ -31,8 +34,14 @@ export default function SignInForm(){
             }
         } catch(e){
             console.log(e);
-            setCreateUserError(true);
+            if(e.message.includes('400')){
+                setCreateUserError(<span>Username or email is already in use.</span>);
+            }else{
+                setCreateUserError(<span>Something went wrong with submitting, please try again</span>)
+            }
+
         }
+        toggleLoading(true);
     }
 
 //Variable aangemaakt voor het icoontje om het makkelijker te hergebruiken.
@@ -98,13 +107,13 @@ export default function SignInForm(){
                     })}
                 />
                 <div className="error-message" >{errors.confirmPassword && <p>{icon} {errors.confirmPassword.message}</p>}</div>
-                {createUserSucces === true && <span>Registered succesfully, you can now <Link to="/login">Login here</Link></span>}
-                {createUserError === true && <span>Username or email is already in use.</span>}
 
                 <input className="sign-up-submit"
                        type="submit"
+                       // disabled={loading ? 'Loading...' : 'Register'}
                 />
-                {/*<span>Already have an account?<Link to="/login">Login here</Link></span>*/}
+                {createUserSucces === true && <span>Registered successfully, you can now <Link to="/login">Login here</Link></span>}
+                {createUserError}
             </form>
         </div>
     )
