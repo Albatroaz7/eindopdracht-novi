@@ -17,12 +17,6 @@ a:hover{
     border-bottom: 1px solid #fff;
 }
 
-h1{
-    display: flex;
-    justify-content: center;
-    color: red;
-}
-
 span{
     display: flex;
     justify-content: space-evenly;

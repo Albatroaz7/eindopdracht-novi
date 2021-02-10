@@ -1,39 +1,84 @@
-.movie-container{
-    height: 100vh;
+/*.movie-compo{*/
+/*    display: flex;*/
+/*    flex-flow: row wrap;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*    flex-wrap: wrap;*/
+/*    background-color: hsla(360, 100%, 1%, 1);*/
+/*    padding: 2em;*/
+
+/*    border: 2px solid red;*/
+/*    !*border-radius: 25px;*!*/
+/*}*/
+
+/*.movie-compo-box{*/
+/*    display: flex;*/
+/*    flex-flow: row wrap;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*    color: white;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    width: 50%;*/
+
+/*    border: 2px solid red;*/
+/*    border-radius: 25px;*/
+/*    list-style: none;*/
+/*}*/
+
+/*!*.movie-compo-box img{*!*/
+/*!*    width: 100%;*!*/
+/*!*}*!*/
+
+/*.search-bar-container{*/
+/*    box-sizing: border-box;*/
+/*    background-color: black;*/
+/*    padding: 50px;*/
+/*    margin-top: 200px;*/
+/*    margin-bottom: 600px;*/
+
+/*    border: 2px solid red;*/
+/*    border-radius: 25px;*/
+/*}*/
+
+/*.search-bar{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin-top: 50px;*/
+/*    min-width: 300px;*/
+
+/*    padding: 15px 5px;*/
+/*    font-size: 18px;*/
+/*    font-weight: 400;*/
+/*    border-width: 0 0 2px 0;*/
+/*    border-color: black;*/
+/*    outline: none;*/
+/*    transition: border-color 0.2s;*/
+/*}*/
+
+.search-bar-title{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    background-image: url("https://images.pathe-thuis.nl/13546_1920x1080.jpg");
-}
-
-.movie-compo{
-    border: 1px solid black;
-}
-
-img{
-    display: block;
-    max-width: 100%;
+    justify-content: center;
+    color: red;
 }
 
 .search-bar-container{
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
-    padding: 50px;
-    margin-top: 200px;
-    margin-bottom: 600px;
+    padding: 2.5rem;
+    margin-left: 35%;
 
-    border: 2px solid red;
+    border: 1.5px solid red;
     border-radius: 25px;
 }
 
 .search-bar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
     min-width: 300px;
-
+    display: block;
+    margin: 20px;
     padding: 15px 5px;
     font-size: 18px;
     font-weight: 400;
@@ -43,8 +88,93 @@ img{
     transition: border-color 0.2s;
 }
 
-legend{
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
+.search-bar-background{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: hsla(360, 100%, 2%, 1);
 }
+
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: hsla(360, 100%, 2%, 1);
+    /*min-height: 100vh;*/
+    /*height: 100%;*/
+}
+
+html{
+    background: hsla(360, 100%, 2%, 1);
+}
+
+.movie-compo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+}
+
+.movie-compo-box{
+    flex: 0 0 200px;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+    background-color: black;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.movie-compo-overlay{
+    background-color: white;
+    box-shadow: 0 -3px 5px rgba(0,0,0,0.1);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    overflow: auto;
+    max-height: 100%;
+    transform: translateY(102%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie-compo-box img{
+    width: 100%;
+}
+
+.movie-compo-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    color: white;
+}
+
+.movie-compo-text h4{
+    margin: 0;
+}
+
+.movie-compo-box:hover .movie-compo-overlay{
+    transform: translateY(0%);
+}
+
+.tag{
+    background-color: hsla(360, 100%, 5%, 1);
+    color: black;
+    padding: 0.5rem;
+}
+
+.tag.green{
+    color: green;
+}
+
+.tag.orange{
+    color: orange;
+}
+
+.tag.red{
+    color: red;
+}
+

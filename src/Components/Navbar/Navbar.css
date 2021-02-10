@@ -12,6 +12,14 @@ Link{
     text-decoration: none;
 }
 
+.log-out-submit{
+    background-color: black;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
 nav{
     display: flex;
     justify-content: space-between;

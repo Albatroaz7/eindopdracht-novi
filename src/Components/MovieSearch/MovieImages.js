@@ -2,21 +2,31 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './MovieImages.css'
 
+
 export default function MovieImages(){
     const [ movies, setMovies] = useState([]);
     const [ searchTerm, setSearchTerm] = useState('');
+
+    const setVoteClass = (vote) => {
+        if(vote >= 8){
+            return'green';
+        } else if(vote >= 6){
+            return 'orange';
+        } else {
+            return 'red';
+        }
+    }
 
     const options = {
         method: 'GET',
         url: 'https://unogsng.p.rapidapi.com/search',
         params: {
             query: searchTerm,
-            orderby: 'rating',
-            limit: '100',
+            orderby: 'date',
+            limit: '56',
             type: 'movie',
-            countrylist: '67',
-            start_year: '2010',
-            end_year: '2019',
+            start_year: '2000',
+            end_year: '2020',
         },
         headers: {
             'x-rapidapi-key': '144c35bfc8msh6ad5c07734e15a7p15c7acjsn85ca2090551c',
@@ -39,17 +49,10 @@ export default function MovieImages(){
 
     console.log(movies)
 
-    // the function that is being called upon whenever the user presses 'enter'.
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        console.log(searchTerm)
-        // {movies?.map((movie) => {
-        //     return <div className='movie-compo'>
-        //         <img src={movie?.img}/>
-        //         <h3>{movie?.imdbrating}</h3>
-        //     </div>
-        // })}
     }
+
 
     //Changes the state of searchterm with the users input whenever he/she presses 'enter'.
     const handleOnChange = (e) => {
@@ -59,26 +62,47 @@ export default function MovieImages(){
     }
 
     return(
-
-        //form for the searchbar
-  <div className='movie-container'>
-      <div className='search-bar-container'>
-          <h1>Search</h1>
-          <form onSubmit={handleOnSubmit}>
-          <input className='search-bar'
-              type='text'
-              placeholder='Search'
-              onKeyPress={handleOnChange}
-          />
-          </form>
-      </div>
-      {/*{movies?.map((movie) => {*/}
-      {/*    return <div className='movie-compo'>*/}
-      {/*        <img src={movie?.img}/>*/}
-      {/*        <h3>{movie?.imdbrating}</h3>*/}
-      {/*    </div>*/}
-      {/*})}*/}
+<>
+  <div className='search-bar-background'>
+    <div className='search-bar-container'>
+        <form onSubmit={handleOnSubmit}>
+            <h2 className='search-bar-title'>Search for your movie:</h2>
+            <input className='search-bar'
+                   type='text'
+                   placeholder='Search'
+                   onKeyPress={handleOnChange}
+            />
+        </form>
+    </div>
   </div>
+  <div className='movie-container'>\
+
+      <div>
+          <ul className='movie-compo'>
+
+      {movies?.map((movie) => {
+          return <li className='movie-compo-box'>
+              <img src={movie?.img} alt='movie image'/>
+              <div className='movie-compo-text'>
+              <h4>{movie?.title}</h4>
+              <h4 className={`tag ${setVoteClass(movie?.imdbrating)}`}>
+                  {movie?.imdbrating}
+              </h4>
+              </div>
+                  <br />
+                  <div className='movie-compo-overlay'>
+              <h3>Overview:</h3>
+                  <br />
+              <p>{movie?.synopsis}</p>
+              {/*    <br />*/}
+              {/*<p>{movie?.clist}</p>*/}
+              </div>
+          </li>
+      })}
+      </ul>
+  </div>
+  </div>
+</>
 
     )
 }

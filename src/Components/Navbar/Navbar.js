@@ -1,14 +1,25 @@
-import React from 'react';
-import { Switch, Link, Route } from "react-router-dom";
+import React, { useContext, useEffect } from 'react';
+import {Switch, Link, Route, Redirect, useHistory} from "react-router-dom";
 import Homepage from "../../Pages/Homepage/Homepage";
 import MyProfile from "../../Pages/MyProfile/MyProfile";
 import Trending from "../../Pages/Trending/Trending";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import './Navbar.css';
+import { AuthContext, useAuthState} from "../Context/AuthContext";
 
 
 export default function Navbar(){
+    const history = useHistory();
+    const { isAuthenticated } = useAuthState();
+    const { logout } = useContext(AuthContext);
+
+    useEffect(() => {
+        if(isAuthenticated === false){
+            history.push('/login')
+        }
+    }, [isAuthenticated])
+
     return(
 <>
         <div className="nav-container">
@@ -19,6 +30,7 @@ export default function Navbar(){
                         alt="Netflix logo"
                     />
                     <ul className='navbar-menu'>
+
                         <li>
                             <Link to="/">Homepage</Link>
                         </li>
@@ -31,17 +43,26 @@ export default function Navbar(){
                         <li>
                             <Link to="/register">Register</Link>
                         </li>
+                        <li>
+                            {isAuthenticated ? <input
+                                    className="log-out-submit"
+                                    value="Logout"
+                                    type="submit"
+                                    onClick={logout}
+                                /> : ''}
+                        </li>
                     </ul>
                 </nav>
                 </div>
             </div>
             <div>
+
                 <Switch>
                     <Route exact path="/">
                         <Homepage />
                     </Route>
                     <Route path="/myprofile">
-                        <MyProfile />
+                        {isAuthenticated ? <MyProfile /> : <Redirect to="/login" />}
                     </Route>
                     <Route path="/trending">
                         <Trending />
