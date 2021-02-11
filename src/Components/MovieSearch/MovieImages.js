@@ -34,7 +34,7 @@ export default function MovieImages(){
         }
     };
 
-    //Using the useEffect to get the data from the API the moment the page loads.
+    //Using the useEffect to get the data from the API the moment the user presses 'enter'.
     useEffect(() => {
             async function getMovie() {
                 try {

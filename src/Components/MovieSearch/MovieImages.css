@@ -69,7 +69,7 @@
     align-items: center;
     background-color: black;
     padding: 2.5rem;
-    margin-left: 35%;
+    margin-left: 39%;
 
     border: 1.5px solid red;
     border-radius: 25px;
@@ -98,8 +98,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color: hsla(360, 100%, 2%, 1);
-    /*min-height: 100vh;*/
-    /*height: 100%;*/
+    justify-content: center;
 }
 
 html{

@@ -60,6 +60,19 @@ span{
     transition: border-color 0.2s;
 }
 
+.sign-up-container button{
+    min-width: 300px;
+    display: block;
+    margin: 20px;
+    padding: 15px 5px;
+    font-size: 18px;
+    font-weight: 400;
+    border-width: 0 0 2px 0;
+    border-color: black;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
 .sign-up-container input:focus{
     border-color: #555;
 }

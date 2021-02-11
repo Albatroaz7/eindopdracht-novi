@@ -32,6 +32,7 @@ nav img{
     width: 10%;
     display: flex;
     justify-content: flex-start;
+    cursor: pointer;
 }
 
 nav .navbar-menu{

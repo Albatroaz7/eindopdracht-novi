@@ -108,10 +108,11 @@ export default function SignInForm(){
                 />
                 <div className="error-message" >{errors.confirmPassword && <p>{icon} {errors.confirmPassword.message}</p>}</div>
 
-                <input className="sign-up-submit"
+                <button className="sign-up-submit"
                        type="submit"
-                       // disabled={loading ? 'Loading...' : 'Register'}
-                />
+                       disabled={loading}>
+                    {loading ? 'Loading...' : 'Register'}
+                </button>
                 {createUserSucces === true && <span>Registered successfully, you can now <Link to="/login">Login here</Link></span>}
                 {createUserError}
             </form>
