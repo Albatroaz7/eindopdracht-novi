@@ -1,23 +1,32 @@
 import React from 'react';
+import ExpiringMovies from "../../Components/ExpiringMovies/ExpiringMovies";
+import './MyProfile.css';
 import {useAuthState} from "../../Components/Context/AuthContext";
 
 export default function MyProfile(){
     const { user } = useAuthState();
+
     return(
-        <div>
-            <h2>MyProfile</h2>
+        <div className='my-profile-container'>
+            <div className='my-profile-info'>
+                <h2>My Profile Information</h2>
 
-            {user && (
-                <>
-                    <p><strong>Username:</strong> {user.username} </p>
-                    <p><strong>Email:</strong> {user.email} </p>
-                </>
-            )}
-<br />
-<br />
+                {user && (
+                    <>
+                        <p><strong>Username:</strong> {user.username} </p>
+                        <p><strong>Email:</strong> {user.email} </p>
+                        <p><strong>Role:</strong> {user.role}</p>
 
-            <h2>Movies in your country:</h2>
+                    </>
+                )}
+                <br />
+                <br />
+
+            </div>
+            <ExpiringMovies />
         </div>
+
+
     )
 
 }

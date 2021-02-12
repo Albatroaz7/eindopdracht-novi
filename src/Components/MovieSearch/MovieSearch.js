@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import './MovieImages.css'
+import './MovieSearch.css'
 
 
-export default function MovieImages(){
+export default function MovieSearch(){
     const [ movies, setMovies] = useState([]);
     const [ searchTerm, setSearchTerm] = useState('');
 
@@ -17,14 +17,13 @@ export default function MovieImages(){
         }
     }
 
-    const options = {
+    const options1 = {
         method: 'GET',
         url: 'https://unogsng.p.rapidapi.com/search',
         params: {
             query: searchTerm,
             orderby: 'date',
             limit: '56',
-            type: 'movie',
             start_year: '2000',
             end_year: '2020',
         },
@@ -38,7 +37,7 @@ export default function MovieImages(){
     useEffect(() => {
             async function getMovie() {
                 try {
-                const response = await axios(options)
+                const response = await axios(options1)
                 setMovies(response.data.results)
             }catch(e) {
                     console.error(e);
@@ -75,12 +74,29 @@ export default function MovieImages(){
         </form>
     </div>
   </div>
-  <div className='movie-container'>\
 
+  <div className='movie-container'>
       <div>
           <ul className='movie-compo'>
 
       {movies?.map((movie) => {
+          let countryList = movie?.clist;
+          countryList = String(countryList)
+          countryList = countryList.replace(new RegExp('"', "g"), '')
+          countryList = countryList.replace(new RegExp(":", "g"), ', ')
+          countryList = countryList.split(",")
+
+          let mainList = []
+
+          console.log(countryList)
+          let arrayLength = countryList.length;
+          for (let i = 0; i < arrayLength; i++) {
+              if(i%2 != 0) {
+                  mainList.push(countryList[i]);
+              }
+          }
+          countryList = mainList.toString()
+
           return <li className='movie-compo-box'>
               <img src={movie?.img} alt='movie image'/>
               <div className='movie-compo-text'>
@@ -90,17 +106,17 @@ export default function MovieImages(){
               </h4>
               </div>
                   <br />
-                  <div className='movie-compo-overlay'>
-              <h3>Overview:</h3>
+              <div className='movie-compo-overlay'>
+                  {/*//The +x number of countries is what you get back form the API call. */}
+              <h3 id='overview'>Countrylist:</h3>
                   <br />
-              <p>{movie?.synopsis}</p>
-              {/*    <br />*/}
-              {/*<p>{movie?.clist}</p>*/}
+                  <p>{countryList}</p>
               </div>
           </li>
       })}
       </ul>
   </div>
+
   </div>
 </>
 

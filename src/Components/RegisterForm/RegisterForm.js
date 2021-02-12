@@ -5,15 +5,18 @@ import { Link } from "react-router-dom";
 import { faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import CountrySelect from "../CountrySelect/CountrySelect";
 
 const endpointLinkRegister = 'https://polar-lake-14365.herokuapp.com/api/auth/signup'
 
-export default function SignInForm(){
+export default function SignInForm(props){
     const [ createUserSucces, setCreateUserSucces ] = useState(false);
     const [ createUserError, setCreateUserError ] = useState(false);
     const [ loading, toggleLoading ] = useState(false);
-
     const { register, handleSubmit, errors, watch} = useForm();
+
+    const numCountry = watch("country", props.country);
+
     const password = useRef({});
     password.current = watch("password", "");
 
@@ -26,6 +29,7 @@ export default function SignInForm(){
                 email: data.email,
                 password: data.password,
                 confirmpassword: data.confirmpassword,
+                country: data.country,
                 role: ['user'],
             });
             console.log(response);
@@ -76,6 +80,7 @@ export default function SignInForm(){
                 />
                 <div className="error-message">{errors.email && <p>{icon} Email is required</p>}</div>
 
+
                 <label htmlFor="password"/>
                 <input
                     name="password"
@@ -107,6 +112,8 @@ export default function SignInForm(){
                     })}
                 />
                 <div className="error-message" >{errors.confirmPassword && <p>{icon} {errors.confirmPassword.message}</p>}</div>
+
+                <CountrySelect />
 
                 <button className="sign-up-submit"
                        type="submit"

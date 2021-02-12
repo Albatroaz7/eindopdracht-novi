@@ -7,6 +7,7 @@ function AuthContextProvider({ children }){
         status: 'pending',
         error: null,
         user: null,
+        country: null,
     });
 
     useEffect(() => {
@@ -29,6 +30,7 @@ function AuthContextProvider({ children }){
                 username: data.username,
                 email: data.email,
                 roles: data.roles,
+                country: data.country,
             }
         })
     }

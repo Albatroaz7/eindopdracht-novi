@@ -48,20 +48,7 @@ span{
 }
 
 .sign-up-container input{
-    min-width: 300px;
-    display: block;
-    margin: 20px;
-    padding: 15px 5px;
-    font-size: 18px;
-    font-weight: 400;
-    border-width: 0 0 2px 0;
-    border-color: black;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.sign-up-container button{
-    min-width: 300px;
+    min-width: 299px;
     display: block;
     margin: 20px;
     padding: 15px 5px;
@@ -78,13 +65,20 @@ span{
 }
 
 .sign-up-submit{
-    padding: 12px 5px;
-    border-width: 0;
+    /*padding: 12px 5px;*/
+    /*border-width: 0;*/
     font-size: 18px;
     font-weight: 400;
     background-color: red;
     outline: none;
     cursor: pointer;
+    min-width: 300px;
+    display: block;
+    margin: 20px;
+    padding: 15px 5px;
+    border-width: 0 0 2px 0;
+    border-color: black;
+    transition: border-color 0.2s;
 }
 
 .sign-up-submit:hover{
@@ -100,4 +94,10 @@ span{
     text-align: center;
     border-radius: 3px;
     border: 1px solid #EF9A9A;
+}
+
+.country {
+    font-size: large;
+    padding: 15px 21px;
+    margin: 20px;
 }

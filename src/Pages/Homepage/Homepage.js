@@ -1,6 +1,6 @@
 import React from 'react';
 import './Homepage.css';
-import MovieSearch from "../../Components/MovieSearch/MovieImages";
+import MovieSearch from "../../Components/MovieSearch/MovieSearch";
 
 export default function Homepage() {
 
