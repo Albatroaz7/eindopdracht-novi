@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import './ExpiringMovies.css';
-import {useAuthState} from "../Context/AuthContext";
 
 export default function ExpiringMovies(){
     const [ expiringMovies, setExpiringMovies] = useState([]);
     const [ newReleaseMovies, setNewReleaseMovies ] = useState([]);
 
-    const { user } = useAuthState();
-
-
+    //info and params from the api to get the expiring movies in a country.
     const options2 = {
         method: 'GET',
         url: 'https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi',
@@ -19,7 +16,7 @@ export default function ExpiringMovies(){
             'x-rapidapi-host': 'unogs-unogs-v1.p.rapidapi.com'
         }
     };
-
+    //info and params from the api to get the movies that have just been released in a country.
     const options3 = {
         method: 'GET',
         url: 'https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi',
@@ -29,7 +26,7 @@ export default function ExpiringMovies(){
             'x-rapidapi-host': 'unogs-unogs-v1.p.rapidapi.com'
         }
     };
-
+    //Getting the data from the api with using useEffect.
     useEffect(() => {
         async function getMovieNewRelease() {
             try {
@@ -65,6 +62,7 @@ export default function ExpiringMovies(){
     <div>
         <ul className='movie-compo'>
 
+
             {expiringMovies?.map((expireMovie) => {
 
                 return <li className='movie-compo-box'>
@@ -75,6 +73,7 @@ export default function ExpiringMovies(){
                     </div>
                     <div className='movie-compo-overlay'>
                         <h3 id='overview'>Overview:</h3>
+                        {/*The API gave back weird characters that i had to remove using slice.*/}
                         <p>{expireMovie?.synopsis.slice(0, -32)}</p>
                     </div>
                 </li>

@@ -7,6 +7,7 @@ export default function MovieSearch(){
     const [ movies, setMovies] = useState([]);
     const [ searchTerm, setSearchTerm] = useState('');
 
+    //function with if statement so it's easier for users to see what rating a movie has.
     const setVoteClass = (vote) => {
         if(vote >= 8){
             return'green';
@@ -17,6 +18,7 @@ export default function MovieSearch(){
         }
     }
 
+    ////info and params from the api to be able to search all movies and see in which country they are available.
     const options1 = {
         method: 'GET',
         url: 'https://unogsng.p.rapidapi.com/search',
@@ -33,7 +35,8 @@ export default function MovieSearch(){
         }
     };
 
-    //Using the useEffect to get the data from the API the moment the user presses 'enter'.
+    //Using the useEffect to get the data from the API the moment the user presses 'enter', by using
+    //the searchTerm state in the dependency.
     useEffect(() => {
             async function getMovie() {
                 try {
@@ -88,7 +91,9 @@ export default function MovieSearch(){
 
           let mainList = []
 
-          console.log(countryList)
+          //countrylist in the API gave back alot of unnecessary characters in an array which had to be removed using replace
+          //and split. And then use the if statement to only get the 1, 3, 5, etc.. from the array. Because i didn't
+          // need the other ones.
           let arrayLength = countryList.length;
           for (let i = 0; i < arrayLength; i++) {
               if(i%2 != 0) {

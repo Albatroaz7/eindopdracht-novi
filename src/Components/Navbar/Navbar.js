@@ -42,6 +42,8 @@ export default function Navbar(){
                         <li>
                             <Link to="/register">Register</Link>
                         </li>
+                        {/*If your are logged in, a logout button will show in the navbar. If not, you won't see
+                        the logout button.*/}
                         <li>
                             {isAuthenticated ? <input
                                     className="log-out-submit"
@@ -55,11 +57,12 @@ export default function Navbar(){
                 </div>
             </div>
             <div>
-
                 <Switch>
                     <Route exact path="/">
                         <Homepage />
                     </Route>
+                    {/*If you are logged in, then you can go to the myprofile page. If not, you'll be redirected
+                    to the login page.*/}
                     <Route path="/myprofile">
                         {isAuthenticated ? <MyProfile /> : <Redirect to="/login" />}
                     </Route>
@@ -72,7 +75,6 @@ export default function Navbar(){
                     <Route path="/">
                         <h1>404 not found</h1>
                     </Route>
-
                 </Switch>
             </div>
 </>

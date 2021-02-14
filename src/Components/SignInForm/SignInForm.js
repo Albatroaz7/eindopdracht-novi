@@ -26,11 +26,12 @@ export default function SignInForm(){
 async function onSubmit(data){
     console.log(data);
     try{
-        // Het is ook mogelijk om alleen 'data' te gebruiken, echter schrijf ik het liever uit
-        // voor de duidelijkheid.
+        // It's also possible to only use 'data'. However i rather write it all down, so it's easier to
+        // read when you look at it for the first time or after a long while.
         const response = await axios.post(endpointLinkSignIn, {
             username: data.username,
             password: data.password,
+            country: data.country,
         });
         login(response.data);
     } catch(e){
@@ -39,7 +40,6 @@ async function onSubmit(data){
     }
 }
 
-//Variable aangemaakt voor het icoontje om het makkelijker te hergebruiken.
     const icon = <FontAwesomeIcon icon={faExclamation}/>
 
     return(

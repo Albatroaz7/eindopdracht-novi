@@ -7,7 +7,6 @@ function AuthContextProvider({ children }){
         status: 'pending',
         error: null,
         user: null,
-        country: null,
     });
 
     useEffect(() => {
@@ -53,7 +52,7 @@ function AuthContextProvider({ children }){
     return(
       <AuthContext.Provider value={providerData}>
           { authState.status === 'done' && children}
-          { authState.status === 'pending' && <p>Loading...</p>}
+          { authState.status === 'pending' && <span>Loading...</span>}
       </AuthContext.Provider>
     );
 }
@@ -64,7 +63,7 @@ function useAuthState(){
     const isDone = authState.status === 'done';
     const isAuthenticated = authState.user !== null && isDone;
 
-    console.log('ik ben authenticated', isAuthenticated);
+    // console.log('ik ben authenticated', isAuthenticated);
 
     return {
         ...authState,
