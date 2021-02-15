@@ -29,7 +29,6 @@ function AuthContextProvider({ children }){
                 username: data.username,
                 email: data.email,
                 roles: data.roles,
-                country: data.country,
             }
         })
     }
@@ -40,7 +39,6 @@ function AuthContextProvider({ children }){
             ...authState,
             user: null,
         })
-
     }
 
     const providerData = {
