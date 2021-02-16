@@ -5,3 +5,14 @@ html {
 .my-profile-info{
     color: white;
 }
+
+.country-search-bar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 780px;
+}
+
+.profile-info{
+    font-size: larger;
+}

@@ -1,39 +1,27 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from "axios";
-import './ExpiringMovies.css';
+import './MyProfileMovies.css';
 import {CountryContext} from "../../Pages/MyProfile/MyProfile";
 
-export default function ExpiringMovies(){
+export default function MyProfileMovies(){
     const [ expiringMovies, setExpiringMovies] = useState([]);
     const [ newReleaseMovies, setNewReleaseMovies ] = useState([]);
 
     const countries = useContext(CountryContext);
-    const expCountries = `'get:exp: + ${countries}'`
-    console.log(expCountries);
-    console.log(countries);
 
-    //info and params from the api to get the expiring movies in a country.
-    const options2 = {
-        method: 'GET',
-        url: 'https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi',
-            params: {q: 'get:exp:NL', t: 'ns', st: 'adv', p: '1'},
-        headers: {
-            'x-rapidapi-key': '144c35bfc8msh6ad5c07734e15a7p15c7acjsn85ca2090551c',
-            'x-rapidapi-host': 'unogs-unogs-v1.p.rapidapi.com'
-        }
-    };
-    {/*//info and params from the api to get the movies that have just been released in a country.*/}
-    const options3 = {
-        method: 'GET',
-        url: 'https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi',
-        params: {q: 'get:new7:NL', p: '1', t: 'ns', st: 'adv'},
-        headers: {
-            'x-rapidapi-key': '144c35bfc8msh6ad5c07734e15a7p15c7acjsn85ca2090551c',
-            'x-rapidapi-host': 'unogs-unogs-v1.p.rapidapi.com'
-        }
-    };
     //Getting the data from the api with using useEffect.
     useEffect(() => {
+        //info and params from the api to get the movies that have just been released in a country.
+        const options3 = {
+            method: 'GET',
+            url: 'https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi',
+            params: {q: `get:new7:${countries}`, p: '1', t: 'ns', st: 'adv'},
+            headers: {
+                'x-rapidapi-key': '144c35bfc8msh6ad5c07734e15a7p15c7acjsn85ca2090551c',
+                'x-rapidapi-host': 'unogs-unogs-v1.p.rapidapi.com'
+            }
+        };
+
         async function getMovieNewRelease() {
             try {
                 const response = await axios(options3)
@@ -43,11 +31,19 @@ export default function ExpiringMovies(){
             }
         }
         getMovieNewRelease();
-    }, [])
-
-    console.log(newReleaseMovies)
+    }, [countries])
 
     useEffect(() => {
+        // info and params from the api to get the expiring movies in a country.
+        const options2 = {
+            method: 'GET',
+            url: 'https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi',
+            params: {q: `get:exp:${countries}`, t: 'ns', st: 'adv', p: '1'},
+            headers: {
+                'x-rapidapi-key': '144c35bfc8msh6ad5c07734e15a7p15c7acjsn85ca2090551c',
+                'x-rapidapi-host': 'unogs-unogs-v1.p.rapidapi.com'
+            }
+        };
         async function getMovieExpire() {
             try {
                 const response = await axios(options2)
@@ -57,14 +53,12 @@ export default function ExpiringMovies(){
             }
         }
         getMovieExpire();
-    }, [])
-
-    console.log(expiringMovies);
+    }, [countries])
 
     return(
         <>
         <div className='my-profile-container'>
-            <h1 className='my-profile-expiring'>Movies to be expired in your country:</h1>
+            <h1 className='my-profile-expiring'>Movies to be expired in your selected country:</h1>
     <div>
         <ul className='movie-compo'>
 
@@ -86,7 +80,7 @@ export default function ExpiringMovies(){
             })}
         </ul>
     </div>
-            <h1 className='my-profile-added'>Movies recently added in your country:</h1>
+            <h1 className='my-profile-added'>Movies recently added in your selected country:</h1>
             <div>
                 <ul className='movie-compo'>
 
