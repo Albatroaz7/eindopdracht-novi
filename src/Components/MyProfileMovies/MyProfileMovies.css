@@ -13,15 +13,14 @@ h3{
 }
 
 .my-profile-added{
-    margin-left: 35%;
+    margin-left: 32%;
 }
 
 .my-profile-expiring{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-    margin-left: 35%;
+    margin-left: 32%;
 }
 
 .date-box{
