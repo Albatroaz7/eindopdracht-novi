@@ -4,6 +4,7 @@ import Homepage from "../../Pages/Homepage/Homepage";
 import MyProfile from "../../Pages/MyProfile/MyProfile";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
+import Contact from "../../Pages/Contact/Contact";
 import './Navbar.css';
 import { AuthContext, useAuthState} from "../Context/AuthContext";
 
@@ -42,6 +43,9 @@ export default function Navbar(){
                         <li>
                             <Link to="/register">Register</Link>
                         </li>
+                        <li>
+                            <Link to="/contact">Contact</Link>
+                        </li>
                         {/*If your are logged in, a logout button will show in the navbar. If not, you won't see
                         the logout button.*/}
                         <li>
@@ -71,6 +75,9 @@ export default function Navbar(){
                     </Route>
                     <Route path="/register">
                         <Register />
+                    </Route>
+                    <Route path="/contact">
+                        <Contact />
                     </Route>
                     <Route path="/">
                         <h1>404 not found</h1>

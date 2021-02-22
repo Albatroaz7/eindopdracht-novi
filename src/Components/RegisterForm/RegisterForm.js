@@ -35,8 +35,12 @@ export default function SignInForm(props){
             }
         } catch(e){
             console.log(e);
+            //If the error code is 400, then a account with the given username or email is already in use. This will
+            //give the user an error message to let him/her know.
             if(e.message.includes('400')){
                 setCreateUserError(<span>Username or email is already in use.</span>);
+            //If the error code is not 400, but for example 401, 402, etc.. Then this will give the user an error message
+            //to let him/her know something went wrong and to try registering again.
             }else{
                 setCreateUserError(<span>Something went wrong with submitting, please try again</span>)
             }

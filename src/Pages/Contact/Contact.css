@@ -1,0 +1,43 @@
+.contact-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("https://titanicsound.files.wordpress.com/2014/11/titanic_movie-hd-1.jpg");
+}
+
+.contact-form{
+    background-color: black;
+    padding: 2.5em;
+
+    border: 2px solid red;
+    border-radius: 25px;
+}
+
+.contact-container input{
+    min-width: 300px;
+    display: block;
+    margin: 20px;
+    padding: 15px 5px;
+    font-size: 18px;
+    font-weight: 400;
+    border-width: 0 0 2px 0;
+    border-color: black;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.contact-submit{
+    padding: 12px 5px;
+    border-width: 0;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: red;
+    outline: none;
+    cursor: pointer;
+}
+
+.contact-comment{
+     height: 200px;
+}
