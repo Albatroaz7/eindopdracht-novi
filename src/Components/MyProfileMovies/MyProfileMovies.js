@@ -66,7 +66,7 @@ export default function MyProfileMovies(){
             {expiringMovies?.map((expireMovie) => {
 
                 return <li className='movie-compo-box'>
-                    <img src={expireMovie?.image} alt='movie image'/>
+                    <img src={expireMovie?.image} alt='movie image' key={expireMovie?.id}/>
                     <h3 className='movie-compo-title'>{expireMovie?.title}</h3>
                     <div className='movie-compo-text'>
                         <h4 className='date-box'>Expiring date: {expireMovie?.unogsdate}</h4>
@@ -86,7 +86,7 @@ export default function MyProfileMovies(){
 
                     {newReleaseMovies?.map((newMovie) => {
                         return <li className='movie-compo-box'>
-                            <img src={newMovie?.image} alt='movie image'/>
+                            <img src={newMovie?.image} alt='movie image' key={newMovie?.id}/>
                             <h3>{newMovie?.title}</h3>
                             <div className='movie-compo-text'>
                                 <h4 className='date-box'>Added: {newMovie?.unogsdate}</h4>

@@ -103,7 +103,7 @@ export default function MovieSearch(){
           countryList = mainList.toString()
 
           return <li className='movie-compo-box'>
-              <img src={movie?.img} alt='movie image'/>
+              <img src={movie?.img} alt='movie image' key={movie?.id}/>
               <div className='movie-compo-text'>
               <h4>{movie?.title}</h4>
               <h4 className={`tag ${setVoteClass(movie?.imdbrating)}`}>

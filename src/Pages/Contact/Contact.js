@@ -13,6 +13,7 @@ export default function Contact(){
     return(
         <div className='contact-container'>
             <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
+                <h1>Contact</h1>
                 <label htmlFor='firstName'/>
                 <input
                     name='firstname'
