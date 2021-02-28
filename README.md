@@ -24,13 +24,13 @@ to launch the application.
 2. Go to the Register page to make a new account, see picture below.
 ![img.png](public/img2.png)
 3. After successfully registering, go the Login page to login with your newly made account, see picture below.
-![img_1.png](img_1.png)
+![img_1.png](public/img3.png)
 4. After successfully login in, you will be directed to the profile page, see picture below.   
 ![img.png](public/img.png)
-5. Here you will see your Profile information and you can select a Country. You will then see 2 lists, 1 list will show
-the movies that are to be expired. And 1 list will show the movies that has been recently added.
+5. Here you will see your Profile information, and you can select a Country. You will then see 2 lists, 1 list will show
+the movies that are to be expired and 1 list will show the movies that has been recently added.
 6. At any time you can go to the homepage to look up any move available movie on Netflix, it will then tell you in which
-countries that movie is available.
+countries that movie is available. See picture below.
 ![img.png](public/img4.png)
 
 <h3>CSS</h3>
