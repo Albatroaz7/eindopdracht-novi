@@ -1,6 +1,6 @@
 ~~<strong>Installatiehandleiding:</strong>~~
 
-Inleiding:
+Inleiding: 
 
 
 

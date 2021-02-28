@@ -61,8 +61,6 @@ export default function MyProfileMovies(){
             <h1 className='my-profile-expiring'>Movies to be expired in your selected country:</h1>
     <div>
         <ul className='movie-compo'>
-
-
             {expiringMovies?.map((expireMovie) => {
 
                 return <li className='movie-compo-box'>
@@ -102,5 +100,5 @@ export default function MyProfileMovies(){
             </div>
     </div>
         </>
-    )
+    );
 }

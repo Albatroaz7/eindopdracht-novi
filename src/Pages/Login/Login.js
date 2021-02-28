@@ -6,7 +6,5 @@ export default function Login(){
         <div>
             <SignInForm />
         </div>
-    )
-
-
+    );
 }

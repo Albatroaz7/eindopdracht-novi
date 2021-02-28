@@ -24,12 +24,6 @@ span{
     color: white;
 }
 
-/*.error-message{*/
-/*    color: #ba3939;*/
-/*    background: #ffe0e0;*/
-/*    border: 1px solid #a33a3a;*/
-/*}*/
-
 .sign-up-container{
     height: 100vh;
     display: flex;
@@ -65,8 +59,6 @@ span{
 }
 
 .sign-up-submit{
-    /*padding: 12px 5px;*/
-    /*border-width: 0;*/
     font-size: 18px;
     font-weight: 400;
     background-color: red;

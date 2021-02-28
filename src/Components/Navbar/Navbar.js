@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import {Switch, Link, Route, Redirect, useHistory} from "react-router-dom";
 import Homepage from "../../Pages/Homepage/Homepage";
 import MyProfile from "../../Pages/MyProfile/MyProfile";
@@ -14,7 +14,7 @@ export default function Navbar(){
     const { isAuthenticated } = useAuthState();
     const { logout } = useContext(AuthContext);
 
-    const redirectLogo = (e) => {
+    const redirectLogo = () => {
             (history.push('/'))
     }
 
@@ -86,5 +86,5 @@ export default function Navbar(){
             </div>
 </>
 
-    )
+    );
 }

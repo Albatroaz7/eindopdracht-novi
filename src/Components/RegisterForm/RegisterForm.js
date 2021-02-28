@@ -8,7 +8,7 @@ import axios from "axios";
 
 const endpointLinkRegister = 'https://polar-lake-14365.herokuapp.com/api/auth/signup'
 
-export default function SignInForm(props){
+export default function SignInForm(){
     const [ createUserSucces, setCreateUserSucces ] = useState(false);
     const [ createUserError, setCreateUserError ] = useState(false);
     const [ loading, toggleLoading ] = useState(false);
@@ -18,7 +18,6 @@ export default function SignInForm(props){
     password.current = watch("password", "");
 
     async function onSubmit(data){
-        console.log(data);
         toggleLoading(false);
         try{
             const response = await axios.post(endpointLinkRegister, {
@@ -26,15 +25,13 @@ export default function SignInForm(props){
                 email: data.email,
                 password: data.password,
                 confirmpassword: data.confirmpassword,
-                country: data.country,
                 role: ['user'],
             });
-            console.log(response);
             if(response.status === 200){
                 setCreateUserSucces(true);
             }
         } catch(e){
-            console.log(e);
+            console.error(e);
             //If the error code is 400, then a account with the given username or email is already in use. This will
             //give the user an error message to let him/her know.
             if(e.message.includes('400')){
@@ -55,7 +52,6 @@ export default function SignInForm(props){
     return(
 
         <div className="sign-up-container">
-
 
             <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
                 <h1>Register</h1>
@@ -123,6 +119,6 @@ export default function SignInForm(props){
                 {createUserError}
             </form>
         </div>
-    )
+    );
 
 }

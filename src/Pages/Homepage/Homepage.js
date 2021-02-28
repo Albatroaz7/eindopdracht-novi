@@ -9,6 +9,6 @@ return(
         <MovieSearch />
     </div>
 
-)
+);
 
 }

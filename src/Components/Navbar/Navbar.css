@@ -51,35 +51,3 @@ nav .navbar-menu a{
 nav .navbar-menu a:hover{
     border-bottom: 1px solid #fff;
 }
-
-
-
-
-/*.nav-container{*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    width: 100%;*/
-/*    padding: 20px;*/
-/*    height: 30px;*/
-
-/*    display: inline-flex;*/
-/*    justify-content: space-between;*/
-/*    background-color: black;*/
-/*}*/
-
-/*.navigation-logo{*/
-/*    position: fixed;*/
-/*    left: 20px;*/
-/*    width: 80px;*/
-/*    object-fit: contain;*/
-/*}*/
-
-/*li{*/
-/*    display: inline*/
-/*}*/
-
-/*ul{*/
-/*    list-style-type: none;*/
-/*}*/
-
-

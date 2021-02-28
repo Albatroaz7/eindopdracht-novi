@@ -18,7 +18,7 @@ export default function MovieSearch(){
         }
     }
 
-    ////info and params from the api to be able to search all movies and see in which country they are available.
+    //info and params from the api to be able to search all movies and see in which country they are available.
     const options1 = {
         method: 'GET',
         url: 'https://unogsng.p.rapidapi.com/search',
@@ -48,8 +48,6 @@ export default function MovieSearch(){
         }
         getMovie()
     }, [searchTerm])
-
-    console.log(movies)
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -96,7 +94,7 @@ export default function MovieSearch(){
           // need the other ones.
           let arrayLength = countryList.length;
           for (let i = 0; i < arrayLength; i++) {
-              if(i%2 != 0) {
+              if(i%2 !== 0) {
                   mainList.push(countryList[i]);
               }
           }

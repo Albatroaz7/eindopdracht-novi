@@ -74,9 +74,6 @@ export default function MyProfile(){
                         <option value="GB">United Kingdom</option>
                         <option value="US">United States</option>
                     </select>
-                    {/*{numCountry === 'error' && (*/}
-                    {/*    <div className="error-message"><p>{icon} Please select a country</p></div>*/}
-                    {/*)}*/}
                 </div>
                 </div>
 
@@ -87,9 +84,6 @@ export default function MyProfile(){
             <MyProfileMovies />
         </CountryContext.Provider>
         </>
-
-
-    )
-
+    );
 }
 
